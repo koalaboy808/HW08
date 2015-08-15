@@ -4,12 +4,12 @@
 #### Modify the variables so that all of the statements evaluate to True. ####
 ##############################################################################
 
-var1 = 
-var2 = 
-var3 = 
-var4 = 
-var5 = 
-var6 = 
+var1 = 5
+var2 = "paaawn"
+var3 = ["You","play","like","a","girl!"]
+var4 = ("Hello,Python!"),("Hello,Python!"), ("Hello, Python!")
+var5 = {'egg': 'salad', 'tuna': 'fish', 'happy': 7}
+var6 = 10.0
 
 ###############################################
 #### Don't edit anything below this comment ###

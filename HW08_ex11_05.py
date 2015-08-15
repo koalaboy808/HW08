@@ -23,19 +23,73 @@ def invert_dict_old(d):
             inverse[val].append(key)
     return inverse
 
+# a = {'a': 1, 'p': 1, 'r': 2, 't': 1, 'o': 1}
+# print(invert_dict_old(a))
 
 def invert_dict_new(d):
-    pass
+    inverse = dict()
+    for key, val in d.items():
+        #inverse[val] = inverse.setdefault(val, []) ??? how come don't need to set to value?
+       # check to see if val exists as a key using setdefault
+       # return empty list if not, or return corresponding values if true
+       inverse.setdefault(val, [])
+       # append key to inverse
+       inverse[val].append(key)
+    return inverse
+
+
+#a = {'a': 1, 'p': 1, 'r': 2, 't': 1, 'o': 1}
+#print(invert_dict_new(a))
+
 
 
 def print_hist_newest(d):
-    pass
+    # iterate on max key number
+    for count in range(max(d.keys())):
+        # add 1 to count until max is hit (start at 1)
+        count += 1
+        # use setdefault to check if key exists... if not create empty list for value pair
+        if d.setdefault(count, "Non-Existent!") == "Non-Existent!":
+            d[count] = []
+    print d
+
+
+#d = {1:["this, that"], 3: ["the"]}
+#print d[3]
+#print(print_hist_newest(d))
 
 ##############################################################################
 ################### INSERT COMPLETED CODE FROM 11_02 BELOW: ##################
 ##############################################################################
 
+def histogram_old(s):
+    d = dict()
+    for c in s:
+        if c not in d:
+            d[c] = 1
+        else:
+            d[c] += 1
+    return d
 
+def histogram_new(s):
+    d = dict()
+    for c in s:
+        d[c] = d.get(c,0) + 1
+    return d
+
+
+def get_pledge_list():
+    """ Opens pledge.txt and converts to a list, each item is a word in 
+    the order it appears in the original file. returns the list.
+    """
+    # Your code here.
+    with open("pledge.txt") as f_in:
+        new_list = f_in.read()
+        new_list = new_list.split()
+        new_list = [word.replace(".","")for word in new_list]
+        new_list = [word.replace(":","")for word in new_list]
+        new_list = [word.replace(",","")for word in new_list]
+        return new_list
 
 
 ##############################################################################
