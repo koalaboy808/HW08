@@ -47,19 +47,18 @@ def bulls_cows(user_input, magic_number):
 	temp_list = []
 
 	# first create cow placeholders for temp_list as bull takes precedence
-	for i in range(len(input_list)):
-		# if any userinput digit matches, then append 'cow' for that index
-		if input_list[i] in magic_list:
-			temp_list.append('cow')
-		# otherwise append None
-		else:
-			temp_list.append(None)
+	[temp_list.append('cow') if input_list[i] in magic_list else temp_list.append(None) for i in range(len(input_list))]
 
 	# create bull placeholders for temp_list
+	'''
+	not sure if list comprehension is better than what I commented out here...?
 	for i in range(len(input_list)):
-		# if userinput digit matches exact index digit, then replace index with 'bull'
-		if input_list[i] == magic_list[i]:
-			temp_list[i] = ('bull')
+		if userinput digit matches exact index digit, then replace index with 'bull'
+			if input_list[i] == magic_list[i]:
+	 			temp_list[i] = ('bull')
+	'''
+	[temp_list.pop(i) and temp_list.insert(i, 'bull') for i, obj in enumerate(temp_list) if input_list[i] == magic_list[i]]
+
 
 	# create bull_cow dictionary with keys (None, cow and bull) all set to value (0)
 	bc_dict = {None: 0, "cow": 0, "bull": 0}
